@@ -137,6 +137,8 @@ button {
 .container {
     display: flex;
     justify-content: center;
+
+
 }
 
 .item {
@@ -144,4 +146,28 @@ button {
     padding: 10px;
     border: 1px solid #ccc;
     justify-content: center;
+}
+
+.colorone{
+    color: hotpink;
+    padding: 10px;
+    font-family:inherit;
+    font-size: large;
+    font-weight: 900;
+    
+}
+.colortwo{
+    color: cornflowerblue;
+    padding: 10px;
+    font-family:inherit;
+    font-size: large;
+    font-weight: 900;
+   
+}
+.colorthree{
+    color:violet;
+    padding: 10px;
+    font-family:inherit;
+    font-size: large;
+    font-weight: 900;
 }

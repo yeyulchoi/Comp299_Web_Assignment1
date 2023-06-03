@@ -3,6 +3,8 @@ var router = express.Router();
 
 let posts =[];
 
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('content/home', {
@@ -42,7 +44,13 @@ router.get('/services', function(req, res, next) {
 
 /* GET Contact page. */
 router.get('/contact', function(req, res, next) {
-  res.render('content/contact', { title: 'Contact Us'});     
+  res.render('content/contact', { 
+    title: 'Contact Us',
+    name: 'Yeyul Choi',
+    email:'yeyulchoi@outlook.com',
+    phone:'6479958585'
+  
+  });     
 });
 
 
