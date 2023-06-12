@@ -1,0 +1,23 @@
+{
+    "movies":
+    [
+        {
+            "Name":"Star Wars",
+            "Year": "1977",
+            "Director":"George Lucas",
+            "Rating":"4Stars"
+        },
+        {
+            "Name":"Good morning",
+            "Year": "1999",
+            "Director":"Jane Pull",
+            "Rating":"4Stars"
+        },
+        {
+            "Name":"Spider Man",
+            "Year": "2001",
+            "Director":"Kim Kang",
+            "Rating":"4Stars"
+        }
+    ]
+}
