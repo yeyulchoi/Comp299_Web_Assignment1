@@ -34,7 +34,8 @@ router.get('/', function(req, res, next) {
 router.get('/home', function(req, res, next) {
   res.render('content/home', {
      title: 'Home',
-     posts:posts
+     posts:posts,
+     displayName: req.user ? req.user.displayName: ''
     });  
 });
 
@@ -42,19 +43,28 @@ router.get('/home', function(req, res, next) {
 //router.get('/about',indexController.displayHomePage);
 
 router.get('/about', function(req, res, next) {
-  res.render('content/about', { title: 'About Me'});     
+  res.render('content/about', { 
+  title: 'About Me',
+  displayName: req.user ? req.user.displayName: ''
+});     
 });
 
 /* GET Projects page. */
 //router.get('/projects',indexController.displayHomePage);
 router.get('/projects', function(req, res, next) {
-  res.render('content/projects', { title: 'Projects'});     
+  res.render('content/projects', {
+     title: 'Projects',
+     displayName: req.user ? req.user.displayName: ''
+    });     
 });
 
 /* GET Services page. */
 //router.get('/services',indexController.displayHomePage);
 router.get('/services', function(req, res, next) {
-  res.render('content/services', { title: 'Services'});     
+  res.render('content/services', {
+     title: 'Services',
+     displayName: req.user ? req.user.displayName: ''
+    });     
 });
 
 
@@ -66,6 +76,8 @@ router.get('/contact', function(req, res, next) {
     name: 'Yeyul Choi',
     email:'yeyulchoi@outlook.com',
     phone:'6479958585'
+    ,
+    displayName: req.user ? req.user.displayName: ''
   
   });     
 });
@@ -261,10 +273,21 @@ module.exports.processRegisterPage = (req, res, next) => {
 
 /*GET to perform UserLogout */
 
-router.get('/logout', async(req,res) =>{
-  req.logout();
-  res.redirect('/');
-})
+router.get('/logout', (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      console.error('Error logging out:', err);
+      return res.redirect('/');
+    }
+    res.redirect('/');
+  });
+});
+
+
+// router.get('/logout', (req,res) =>{
+//   req.logout();
+//   res.redirect('/');
+// });
 
 
 

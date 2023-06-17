@@ -23,7 +23,12 @@ function requireAuth(req,res,next)
 router.get('/', async (req, res) => {
     try {
       let bookList = await Book.find();
-      res.render('book/list', { title: 'Books', BookList: bookList });
+      res.render('book/list', 
+      {
+         title: 'Books',
+         BookList: bookList,
+         displayName : req.user ? req.user.displayName :''
+        });
     } catch (err) {
       console.error(err);
       // handle the error in an appropriate way, such as sending an error response
@@ -36,7 +41,8 @@ router.get('/', async (req, res) => {
  router.get('/add',requireAuth, async (req, res) => {
   try {
     const bookList = await Book.find();
-    res.render('book/add', { title: 'Add a Book' });
+    res.render('book/add', { title: 'Add a Book',
+    displayName : req.user ? req.user.displayName :'' });
   } catch (err) {
     console.error(err);
     // handle the error in an appropriate way, such as sending an error response
@@ -76,7 +82,11 @@ router.get('/edit/:id',requireAuth, async (req, res, next) => {
       return;
     }
 
-    res.render('book/edit', { title: 'Edit Book', book: bookToEdit });
+    res.render('book/edit', 
+    { title: 'Edit Book',
+      book: bookToEdit,
+      displayName : req.user ? req.user.displayName :''
+     });
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal Server Error 4');
